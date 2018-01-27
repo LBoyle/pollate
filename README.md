@@ -13,3 +13,5 @@ Saturday 27th
 Looking through old Rails projects to remember how to do it
 
 Generate new project using postgres and erb ```rails new pollate --database=postgres```
+
+Adding serializers before generating scaffolds, must run ```bundle```
