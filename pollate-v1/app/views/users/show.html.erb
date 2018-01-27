@@ -9,10 +9,9 @@
   <p>Polls this user is in:</p>
   <ul>
     <% @user.polls.each do |poll| %>
-      <li><a href="/polls/<%= poll.id %>"><%= poll.title %></a></li>
+      <li><%= link_to poll.title, poll %></li>
     <% end %>
   </ul>
 </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>
