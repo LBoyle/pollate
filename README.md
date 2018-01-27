@@ -21,3 +21,9 @@ Generating scaffolds for User and Poll, also join table between them
 Adding relationships to models and serializers
 
 Working on templating to display relationships
+
+**Made v2**
+
+v2 is an api with a React frontend
+
+Used create-react-app, ran eject to change build location to Rails public folder
