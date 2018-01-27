@@ -1,6 +1,17 @@
 # pollate
 Polling app made with Ruby on Rails
 
+# Instructions
+
+- Clone and ensure PostgreSQL is running in the background
+- Navigate ```cd client/pollate-frontend```
+- Run ```yarn && yarn build``` to compile a production version
+- Or open a new terminal tab ```yarn && yarn start``` for a development version
+- Navigate back to the project route to run ```bundle```
+- Run ```rails db:drop db:create db:migrate db:seed```
+- Then finally run ```rails s``` to start the api server
+
+
 # Development chronology
 
 **Friday 26th**
@@ -27,3 +38,5 @@ Working on templating to display relationships
 v2 is an api with a React frontend
 
 Used create-react-app, ran eject to change build location to Rails public folder
+
+Building out components, performing requests with axios
