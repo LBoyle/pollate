@@ -3,14 +3,14 @@ Polling app made with Ruby on Rails
 
 ## v1
 
-v1 uses erb for templating, it was mainly just to test relationships and be sure I have the correct commands.
+I made a v1 with erb for templating, it was mainly just to test relationships and be sure I have the correct commands.
 In the end I moved on to React because I'm far more comfortable with MVC frontends, it helped me get past some blockers.
 
 ## v2
 
 v2 is the same thing with the --api flag. I used React because it is fresh in my mind, I was able to mock up a frontend very quickly.
 
-In retrospect, I think this complicated the project, I could have met the brief with erb. 
+In retrospect, I think this complicated the project, I could have met the brief with erb.
 
 # Instructions
 
