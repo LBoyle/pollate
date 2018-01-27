@@ -19,3 +19,5 @@ Adding serializers before generating scaffolds, must run ```bundle```
 Generating scaffolds for User and Poll, also join table between them
 
 Adding relationships to models and serializers
+
+Working on templating to display relationships
