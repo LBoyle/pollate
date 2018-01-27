@@ -1,6 +1,10 @@
 # pollate
 Polling app made with Ruby on Rails
 
+It is deployed to Heroku, but few features work, I haven't set up postgres permissions for Heroku yet.
+
+https://pollate.herokuapp.com/
+
 ## v1
 
 I made a v1 with erb for templating, it was mainly just to test relationships and be sure I have the correct commands.
