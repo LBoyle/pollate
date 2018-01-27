@@ -26,6 +26,8 @@ class PollsController < ApplicationController
 
   # PATCH/PUT /polls/1
   def update
+    puts poll_params
+    puts "Here!!!!!!!!!!!!!!!!!!"
     if @poll.update(poll_params)
       render json: @poll
     else
@@ -46,6 +48,6 @@ class PollsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def poll_params
-      params.require(:poll).permit(:title)
+      params.require(:poll).permit(:title, :users)
     end
 end

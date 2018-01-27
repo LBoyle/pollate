@@ -29,6 +29,7 @@ class PollsShow extends Component {
             }) :
             <li>No poll</li>
         }</ul>
+        <Link to={`/polls/${this.props.location.pathname.split('/')[2]}/edit`}>Edit poll</Link>
       </div>
     );
   }

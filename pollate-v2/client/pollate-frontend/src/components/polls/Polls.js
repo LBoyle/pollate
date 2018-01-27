@@ -28,6 +28,7 @@ class Polls extends Component {
             }) :
             <li>No polls</li>
         }</ul>
+        <Link to={'/polls/create'}>New poll</Link>
       </div>
     );
   }
