@@ -30,6 +30,7 @@ class Users extends Component {
               <li>No users</li>
           }
         </ul>
+        <Link to={'/users/create'}>New user</Link>
       </div>
     );
   }

@@ -22,15 +22,15 @@ class PollsCreate extends Component {
       }).catch(err => console.log(err));
   }
   onChange(e) {
-    console.log(this.state);
     this.setState({ [e.target.name]: e.target.value});
   }
   selectChange(e) {
-    // console.log(e.target.value);
     this.setState({ mid: e.target.value });
   }
-  createPoll() {
-    axios.post('http://localhost:3000/api/polls', {poll: this.state});
+  createPoll(e) {
+    e.preventDefault();
+    axios.post('http://localhost:3000/api/polls', {poll: this.state})
+      .then(res => console.log(res));
   }
   render() {
     return (
@@ -39,7 +39,7 @@ class PollsCreate extends Component {
 
         {
           this.state ?
-          <form>
+          <form onSubmit={this.createPoll}>
             <label>Title</label>&nbsp;
             <input
               name="title"

@@ -1,3 +1,3 @@
 class PollSerializer < ActiveModel::Serializer
-  attributes :id, :title, :users
+  attributes :id, :title, :creator, :users
 end

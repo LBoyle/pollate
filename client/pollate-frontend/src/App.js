@@ -4,6 +4,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Users from './components/users/Users';
 import UsersShow from './components/users/UsersShow';
+import UsersCreate from './components/users/UsersCreate';
 import Polls from './components/polls/Polls';
 import PollsShow from './components/polls/PollsShow';
 import PollsEdit from './components/polls/PollsEdit';
@@ -25,6 +26,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/users" component={Users} />
+          <Route exact path="/users/create" component={UsersCreate} />
           <Route exact path="/users/:id" component={UsersShow} />
           <Route exact path="/polls" component={Polls} />
           <Route exact path="/polls/create" component={PollsCreate} />

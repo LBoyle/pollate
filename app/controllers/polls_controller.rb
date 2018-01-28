@@ -15,7 +15,17 @@ class PollsController < ApplicationController
 
   # POST /polls
   def create
-    puts User.find(poll_params[:mid]).polls.create({title: poll_params[:title]})
+    if poll_params[:mid].length > 0
+      user = User.find(poll_params[:mid])
+      @poll = Poll.create({title: poll_params[:title], creator: user})
+      if @poll.save
+        render json: @poll, status: :created, location: @poll
+      else
+        render json: @poll.errors, status: :unprocessable_entity
+      end
+    else
+      render json: {message: "User not found"}, status: :unprocessable_entity
+    end
     # @poll = Poll.new(poll_params)
     #
     # if creator.save

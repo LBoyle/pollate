@@ -73,3 +73,9 @@ Fixed the route for adding a user to a poll, added select field on edit page, ca
 It doesn't prevent duplicates as it is, so it freaks out when there are duplicate users added to a poll
 
 Now added create poll page, just with title, you would then go and edit the new poll to add users
+
+Added email to User and creator to Poll, now must select a creator when making a poll
+
+Create user page, tried getting polls this user has created but couldn't figure it out
+
+Prevented defaults for forms

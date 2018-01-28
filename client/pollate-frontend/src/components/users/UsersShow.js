@@ -26,6 +26,8 @@ class UsersShow extends Component {
             this.state.user.username ?
               <div>
                 <p>Username: {this.state.user.username}</p>
+                <p>Email: {this.state.user.email}</p><br />
+
                 <p>Polls this user is in:</p>
                 <ul>{
                   this.state.user.polls.map(poll => {

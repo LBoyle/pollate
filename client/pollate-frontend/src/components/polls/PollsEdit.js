@@ -51,7 +51,8 @@ class PollsEdit extends Component {
   addUser(id) {
     axios.post(`http://localhost:3000/api/polls/${this.state.id}/adduser`, {poll: this.state});
   }
-  updatePoll() {
+  updatePoll(e) {
+    e.preventDefault();
     axios.put(`http://localhost:3000/api/polls/${this.state.id}`, {poll: this.state});
   }
   render() {
@@ -61,7 +62,7 @@ class PollsEdit extends Component {
 
         {
           this.state ?
-          <form>
+          <form onSubmit={this.updatePoll}>
             <label>Title</label>&nbsp;
             <input
               name="title"
@@ -72,28 +73,30 @@ class PollsEdit extends Component {
             <button onClick={this.updatePoll}>Update title</button>
             <br />
 
-            <ul>{
-              this.state.users.map(user => {
-                return <li key={user.id}>{ `${user.username} - ` }<a href="#" onClick={() => this.removeUser(user.id)}>Remove</a></li>;
-              })
-            }</ul>
 
-            <p>Add user</p>
-            <select onChange={this.selectChange}>
-              <option>Choose</option>
-            {
-              this.state.availableUsers ?
-                this.state.availableUsers.map(user => {
-                  return <option key={user.id} value={user.id}>{user.username}</option>;
-                }) :
-                <option>No users</option>
-            }
-            </select>&nbsp;
-            <button onClick={this.addUser}>Add</button>
 
           </form> :
             <p>loading...</p>
         }
+
+        <ul>{
+          this.state.users.map(user => {
+            return <li key={user.id}>{ `${user.username} - ` }<a href="#" onClick={() => this.removeUser(user.id)}>Remove</a></li>;
+          })
+        }</ul>
+
+        <p>Add user</p>
+        <select onChange={this.selectChange}>
+          <option>Choose</option>
+        {
+          this.state.availableUsers ?
+            this.state.availableUsers.map(user => {
+              return <option key={user.id} value={user.id}>{user.username}</option>;
+            }) :
+            <option>No users</option>
+        }
+        </select>&nbsp;
+        <button onClick={this.addUser}>Add</button>
       </div>
     );
   }
