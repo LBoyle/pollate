@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :set_poll, only: [:show, :update, :destroy]
+  before_action :set_poll, only: [:show, :update, :destroy, :rmember]
 
   # GET /polls
   def index
@@ -26,9 +26,7 @@ class PollsController < ApplicationController
 
   # PATCH/PUT /polls/1
   def update
-    puts poll_params
-    puts "Here!!!!!!!!!!!!!!!!!!"
-    if @poll.update(poll_params)
+    if @poll.update({title: poll_params[:title]})
       render json: @poll
     else
       render json: @poll.errors, status: :unprocessable_entity
@@ -40,6 +38,17 @@ class PollsController < ApplicationController
     @poll.destroy
   end
 
+  # Using POST because DELETE was giving me problems with params
+  # POST /polls/1/rmuser - remove user from poll
+  def rmember
+    @poll.users.delete(User.find(poll_params[:mid]))
+  end
+
+  # POST /polls/1/adduser - add user to poll
+  def amember
+    @poll.users.create(User.find(poll_params[:mid]))
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_poll
@@ -48,6 +57,6 @@ class PollsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def poll_params
-      params.require(:poll).permit(:title, :users)
+      params.require(:poll).permit(:title, :id, :mid)
     end
 end

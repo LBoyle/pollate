@@ -7,12 +7,15 @@ class PollsEdit extends Component {
     super(props);
 
     this.state = {
+      mid: '',
+      id: '',
       title: '',
       users: []
     };
     this.onChange = this.onChange.bind(this);
     this.removeUser = this.removeUser.bind(this);
-    this.submitUpdates = this.submitUpdates.bind(this);
+    this.addUser = this.addUser.bind(this);
+    this.updatePoll = this.updatePoll.bind(this);
   }
   componentWillMount() {
     axios.get(`http://localhost:3000/api/polls/${this.props.location.pathname.split('/')[2]}`)
@@ -25,12 +28,17 @@ class PollsEdit extends Component {
     this.setState({ [e.target.name]: e.target.value});
   }
   removeUser(id) {
-    this.setState({ users: this.state.users.map(user => {
-      if(user.id != id) return user;
-    }).filter(Boolean) });
+    this.setState({ mid: id }, () => {
+      axios.post(`http://localhost:3000/api/polls/${this.state.id}/rmuser`, {poll: this.state});
+    });
   }
-  submitUpdates() {
-    axios.put(`http://localhost:3000/api/polls/${this.state.id}`, this.state);
+  addUser(id) {
+    this.setState({ mid: id }, () => {
+      axios.post(`http://localhost:3000/api/polls/${this.state.id}/rmuser`, {poll: this.state});
+    });
+  }
+  updatePoll() {
+    axios.put(`http://localhost:3000/api/polls/${this.state.id}`, {poll: this.state});
   }
   render() {
     return (
@@ -40,13 +48,15 @@ class PollsEdit extends Component {
         {
           this.state ?
           <form>
-            <label>Title</label>
+            <label>Title</label>&nbsp;
             <input
               name="title"
               type="text"
               palceholder="Title"
               onChange={this.onChange}
-              value={this.state.title} /><br />
+              value={this.state.title} />&nbsp;
+            <button onClick={this.updatePoll}>Update title</button>
+            <br />
 
             <ul>{
               this.state.users.map(user => {
@@ -57,7 +67,6 @@ class PollsEdit extends Component {
           </form> :
             <p>loading...</p>
         }
-        <button onClick={this.submitUpdates}>Submit updates</button>
       </div>
     );
   }
