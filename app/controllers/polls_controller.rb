@@ -15,13 +15,14 @@ class PollsController < ApplicationController
 
   # POST /polls
   def create
-    @poll = Poll.new(poll_params)
-
-    if @poll.save
-      render json: @poll, status: :created, location: @poll
-    else
-      render json: @poll.errors, status: :unprocessable_entity
-    end
+    puts User.find(poll_params[:mid]).polls.create({title: poll_params[:title]})
+    # @poll = Poll.new(poll_params)
+    #
+    # if creator.save
+    #   render json: @poll, status: :created, location: @poll
+    # else
+    #   render json: @poll.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /polls/1
