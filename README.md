@@ -71,3 +71,5 @@ Ultimately worked with the rails console and figured out how to delete relations
 Fixed the route for adding a user to a poll, added select field on edit page, can use this form for new I think as well
 
 It doesn't prevent duplicates as it is, so it freaks out when there are duplicate users added to a poll
+
+Now added create poll page, just with title, you would then go and edit the new poll to add users
