@@ -61,3 +61,9 @@ Made forms for creating and updating polls, don't work properly.
 **Emailed Marcus here**
 
 Branching to continue working.
+
+**Continuation Sunday 28th**
+
+Struggled for a little while with poll_params in the poll controller, figured some cool things out like permitting an array of objects.
+
+Ultimately worked with the rails console and figured out how to delete relationships properly instead of sending a PUT with an updated list. 
