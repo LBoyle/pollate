@@ -66,4 +66,6 @@ Branching to continue working.
 
 Struggled for a little while with poll_params in the poll controller, figured some cool things out like permitting an array of objects.
 
-Ultimately worked with the rails console and figured out how to delete relationships properly instead of sending a PUT with an updated list. 
+Ultimately worked with the rails console and figured out how to delete relationships properly instead of sending a PUT with an updated list.
+
+Fixed the route for adding a user to a poll, added select field on edit page, can use this form for new I think as well

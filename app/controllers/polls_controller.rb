@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :set_poll, only: [:show, :update, :destroy, :rmember]
+  before_action :set_poll, only: [:show, :update, :destroy, :rmember, :amember]
 
   # GET /polls
   def index
@@ -46,7 +46,7 @@ class PollsController < ApplicationController
 
   # POST /polls/1/adduser - add user to poll
   def amember
-    @poll.users.create(User.find(poll_params[:mid]))
+    @poll.users << User.find(poll_params[:mid])
   end
 
   private

@@ -10,22 +10,38 @@ class PollsEdit extends Component {
       mid: '',
       id: '',
       title: '',
-      users: []
+      users: [],
+      availableUsers: []
     };
     this.onChange = this.onChange.bind(this);
+    this.selectChange = this.selectChange.bind(this);
     this.removeUser = this.removeUser.bind(this);
     this.addUser = this.addUser.bind(this);
     this.updatePoll = this.updatePoll.bind(this);
   }
   componentWillMount() {
+    this.getPoll();
+    this.getAvailableUsers();
+  }
+  getPoll() {
     axios.get(`http://localhost:3000/api/polls/${this.props.location.pathname.split('/')[2]}`)
       .then(res => {
         this.setState(res.data);
       }).catch(err => console.log(err));
   }
+  getAvailableUsers() {
+    axios.get('http://localhost:3000/api/users')
+      .then(res => {
+        this.setState({ availableUsers: res.data});
+      }).catch(err => console.log(err));
+  }
   onChange(e) {
     console.log(this.state);
     this.setState({ [e.target.name]: e.target.value});
+  }
+  selectChange(e) {
+    console.log(e.target.value);
+    this.setState({ mid: e.target.value })
   }
   removeUser(id) {
     this.setState({ mid: id }, () => {
@@ -33,9 +49,7 @@ class PollsEdit extends Component {
     });
   }
   addUser(id) {
-    this.setState({ mid: id }, () => {
-      axios.post(`http://localhost:3000/api/polls/${this.state.id}/rmuser`, {poll: this.state});
-    });
+    axios.post(`http://localhost:3000/api/polls/${this.state.id}/adduser`, {poll: this.state});
   }
   updatePoll() {
     axios.put(`http://localhost:3000/api/polls/${this.state.id}`, {poll: this.state});
@@ -63,6 +77,19 @@ class PollsEdit extends Component {
                 return <li key={user.id}>{ `${user.username} - ` }<a href="#" onClick={() => this.removeUser(user.id)}>Remove</a></li>;
               })
             }</ul>
+
+            <p>Add user</p>
+            <select onChange={this.selectChange}>
+              <option>Choose</option>
+            {
+              this.state.availableUsers ?
+                this.state.availableUsers.map(user => {
+                  return <option key={user.id} value={user.id}>{user.username}</option>;
+                }) :
+                <option>No users</option>
+            }
+            </select>&nbsp;
+            <button onClick={this.addUser}>Add</button>
 
           </form> :
             <p>loading...</p>
