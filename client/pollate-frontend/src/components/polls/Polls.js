@@ -19,7 +19,7 @@ class Polls extends Component {
   render() {
     return (
       <div className="Polls">
-        <p>Polls page</p>
+        <h4>Polls page</h4>
 
         <ul>{
           this.state.polls ?

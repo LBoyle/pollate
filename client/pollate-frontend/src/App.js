@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
+import NavBar from './components/NavBar';
+
 import Users from './components/users/Users';
 import UsersShow from './components/users/UsersShow';
 import UsersCreate from './components/users/UsersCreate';
+
 import Polls from './components/polls/Polls';
 import PollsShow from './components/polls/PollsShow';
 import PollsEdit from './components/polls/PollsEdit';
@@ -14,15 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav>
-          <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/users'>Users</Link></li>
-            <li><Link to='/polls'>Polls</Link></li>
-          </ul>
-          <hr />
-        </nav>
-
+        <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/users" component={Users} />

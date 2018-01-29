@@ -35,7 +35,7 @@ class PollsCreate extends Component {
   render() {
     return (
       <div className="PollsCreate">
-        <p>PollsCreate page</p>
+        <h4>PollsCreate page</h4>
 
         {
           this.state ?

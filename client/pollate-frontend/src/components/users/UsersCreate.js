@@ -14,7 +14,6 @@ class UsersCreate extends Component {
     this.createUser = this.createUser.bind(this);
   }
   onChange(e) {
-    console.log(this.state);
     this.setState({ [e.target.name]: e.target.value});
   }
   createUser(e) {
@@ -25,7 +24,7 @@ class UsersCreate extends Component {
   render() {
     return (
       <div className="UsersCreate">
-        <p>UsersCreate page</p>
+        <h4>UsersCreate page</h4>
 
         <form onSubmit={this.createUser}>
           <label>Email</label>&nbsp;

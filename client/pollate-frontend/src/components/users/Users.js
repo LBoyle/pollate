@@ -19,7 +19,7 @@ class Users extends Component {
   render() {
     return (
       <div className="Users">
-        <p>Users page</p>
+        <h4>Users page</h4>
 
         <ul>
           {

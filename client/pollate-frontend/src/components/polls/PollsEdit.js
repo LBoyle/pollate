@@ -36,11 +36,9 @@ class PollsEdit extends Component {
       }).catch(err => console.log(err));
   }
   onChange(e) {
-    console.log(this.state);
     this.setState({ [e.target.name]: e.target.value});
   }
   selectChange(e) {
-    console.log(e.target.value);
     this.setState({ mid: e.target.value })
   }
   removeUser(id) {
@@ -58,7 +56,7 @@ class PollsEdit extends Component {
   render() {
     return (
       <div className="PollsEdit">
-        <p>PollsEdit page</p>
+        <h4>PollsEdit page</h4>
 
         {
           this.state ?
