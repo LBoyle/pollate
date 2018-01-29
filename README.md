@@ -1,9 +1,7 @@
 # pollate
 Polling app made with Ruby on Rails
 
-It is deployed to Heroku, but few features work, I haven't set up postgres permissions for Heroku yet.
-
-https://pollate.herokuapp.com/
+It did deploy it to Heroku, but I haven't set up postgres permissions for Heroku yet.
 
 ## v1
 
@@ -79,3 +77,11 @@ Added email to User and creator to Poll, now must select a creator when making a
 Create user page, tried getting polls this user has created but couldn't figure it out
 
 Prevented defaults for forms
+
+**Monday 29th morning**
+
+Added skeleton.css and styled it up just a little bit
+
+Edit users page
+
+Spend some time making sure AJAX was all correct, redirecting or updating state
