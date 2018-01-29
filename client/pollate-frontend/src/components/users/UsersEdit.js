@@ -2,32 +2,41 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-class UsersCreate extends Component {
+class UsersEdit extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: '',
       username: '',
-      image: ''
+      image: '',
+      id: ''
     };
     this.onChange = this.onChange.bind(this);
-    this.createUser = this.createUser.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  }
+  componentWillMount() {
+    axios.get(`http://localhost:3000/api/users/${this.props.location.pathname.split('/')[2]}`)
+      .then(res => {
+        this.setState({email: res.data.email, username: res.data.username, image: res.data.image});
+      }).catch(err => console.log(err));
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value});
   }
-  createUser(e) {
+  updateUser(e) {
     e.preventDefault();
-    axios.post('http://localhost:3000/api/users', {user: this.state})
-      .then(res => console.log(res));
+    axios.put(`http://localhost:3000/api/users/${this.props.location.pathname.split('/')[2]}`, {user: this.state})
+      .then(res => {
+        this.setState({email: res.data.email, username: res.data.username, image: res.data.image});
+      }).catch(err => console.log(err));
   }
   render() {
     return (
-      <div className="UsersCreate">
-        <h4>UsersCreate page</h4>
+      <div className="UsersEdit">
+        <h4>UsersEdit page</h4>
 
-        <form onSubmit={this.createUser}>
+        <form onSubmit={this.updateUser}>
           <label>Email</label>&nbsp;
           <input
             name="email"
@@ -52,11 +61,11 @@ class UsersCreate extends Component {
             onChange={this.onChange}
             value={this.state.image} /><br />
 
-          <button onClick={this.createUser}>Submit</button>
+          <button onClick={this.updateUser}>Submit</button>
         </form>
       </div>
     );
   }
 }
 
-export default UsersCreate;
+export default UsersEdit;

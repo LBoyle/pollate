@@ -13,7 +13,6 @@ class UsersShow extends Component {
   componentWillMount() {
     axios.get(`http://localhost:3000/api/users/${this.props.location.pathname.split('/')[2]}`)
       .then(res => {
-        console.log(res.data);
         this.setState({user: res.data});
       }).catch(err => console.log(err));
   }
@@ -39,6 +38,7 @@ class UsersShow extends Component {
                       return <li key={`poll${poll.id}`}><Link to={`/polls/${poll.id}`}>{poll.title}</Link></li>;
                     })
                   }</ul>
+                  <Link to={`/users/${this.state.user.id}/edit`}>Edit user</Link>
                 </div>
 
               </div> :

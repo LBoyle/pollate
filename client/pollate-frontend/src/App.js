@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 
 import Users from './components/users/Users';
 import UsersShow from './components/users/UsersShow';
+import UsersEdit from './components/users/UsersEdit';
 import UsersCreate from './components/users/UsersCreate';
 
 import Polls from './components/polls/Polls';
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/users" component={Users} />
           <Route exact path="/users/create" component={UsersCreate} />
           <Route exact path="/users/:id" component={UsersShow} />
+          <Route exact path="/users/:id/edit" component={UsersEdit} />
           <Route exact path="/polls" component={Polls} />
           <Route exact path="/polls/create" component={PollsCreate} />
           <Route exact path="/polls/:id" component={PollsShow} />
