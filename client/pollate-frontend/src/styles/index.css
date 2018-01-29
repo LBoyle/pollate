@@ -12,7 +12,7 @@ nav ul li {
   padding: 2rem;
 }
 .Home,
-.Users, .UsersShow, .UsersCreate,
+.Users, .UsersShow, .UsersCreate, .UsersEdit,
 .Polls, .PollsShow, .PollsCreate, .PollsEdit {
   padding: 3rem;
 }
