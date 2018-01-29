@@ -12,9 +12,8 @@ class PollsShow extends Component {
   }
   componentWillMount() {
     axios.get(`http://localhost:3000/api/polls/${this.props.location.pathname.split('/')[2]}`)
-      .then(res => {
-        this.setState({poll: res.data});
-      }).catch(err => console.log(err));
+      .then(res => this.setState({poll: res.data}))
+      .catch(err => console.log(err));
   }
   render() {
     return (
@@ -23,7 +22,10 @@ class PollsShow extends Component {
         <p>Title: {this.state.poll.title}</p>
         {
           this.state.poll.creator ?
-            <span>Creator: <Link to={`/users/${this.state.poll.creator.id}`}>{this.state.poll.creator.username}</Link></span> :
+            <span>
+              Creator:
+              <Link to={`/users/${this.state.poll.creator.id}`}>{this.state.poll.creator.username}</Link>
+            </span> :
             ''
         }
 

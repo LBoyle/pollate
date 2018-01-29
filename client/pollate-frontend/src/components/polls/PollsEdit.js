@@ -25,15 +25,13 @@ class PollsEdit extends Component {
   }
   getPoll() {
     axios.get(`http://localhost:3000/api/polls/${this.props.location.pathname.split('/')[2]}`)
-      .then(res => {
-        this.setState(res.data);
-      }).catch(err => console.log(err));
+      .then(res => this.setState(res.data))
+      .catch(err => console.log(err));
   }
   getAvailableUsers() {
     axios.get('http://localhost:3000/api/users')
-      .then(res => {
-        this.setState({ availableUsers: res.data});
-      }).catch(err => console.log(err));
+      .then(res => this.setState({ availableUsers: res.data}))
+      .catch(err => console.log(err));
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value});
@@ -43,15 +41,21 @@ class PollsEdit extends Component {
   }
   removeUser(id) {
     this.setState({ mid: id }, () => {
-      axios.post(`http://localhost:3000/api/polls/${this.state.id}/rmuser`, {poll: this.state});
+      axios.post(`http://localhost:3000/api/polls/${this.state.id}/rmuser`, {poll: this.state})
+        .then(res => this.setState({ users: res.data.users }))
+        .catch(err => console.log(err));
     });
   }
   addUser(id) {
-    axios.post(`http://localhost:3000/api/polls/${this.state.id}/adduser`, {poll: this.state});
+    axios.post(`http://localhost:3000/api/polls/${this.state.id}/adduser`, {poll: this.state})
+      .then(res => this.setState({ users: res.data.users }))
+      .catch(err => console.log(err));
   }
   updatePoll(e) {
     e.preventDefault();
-    axios.put(`http://localhost:3000/api/polls/${this.state.id}`, {poll: this.state});
+    axios.put(`http://localhost:3000/api/polls/${this.state.id}`, {poll: this.state})
+      .then(res => this.setState({ title: res.data.title }))
+      .catch(err => console.log(err));
   }
   render() {
     return (

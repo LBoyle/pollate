@@ -20,7 +20,8 @@ class UsersCreate extends Component {
   createUser(e) {
     e.preventDefault();
     axios.post('http://localhost:3000/api/users', {user: this.state})
-      .then(res => console.log(res));
+      .then(res => this.props.history.push('/polls'))
+      .catch(err => console.log(err))
   }
   render() {
     return (

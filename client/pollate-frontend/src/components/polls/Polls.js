@@ -12,9 +12,8 @@ class Polls extends Component {
   }
   componentWillMount() {
     axios.get('http://localhost:3000/api/polls')
-      .then(res => {
-        this.setState({polls: res.data});
-      }).catch(err => console.log(err));
+      .then(res => this.setState({polls: res.data}))
+      .catch(err => console.log(err));
   }
   render() {
     return (

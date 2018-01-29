@@ -12,9 +12,8 @@ class Users extends Component {
   }
   componentWillMount() {
     axios.get('http://localhost:3000/api/users')
-      .then(res => {
-        this.setState({users: res.data});
-      }).catch(err => console.log(err));
+      .then(res => this.setState({users: res.data}))
+      .catch(err => console.log(err));
   }
   render() {
     return (

@@ -53,11 +53,13 @@ class PollsController < ApplicationController
   # POST /polls/1/rmuser - remove user from poll
   def rmember
     @poll.users.delete(User.find(poll_params[:mid]))
+    render json: @poll
   end
 
   # POST /polls/1/adduser - add user to poll
   def amember
     @poll.users << User.find(poll_params[:mid])
+    render json: @poll
   end
 
   private

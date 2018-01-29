@@ -17,9 +17,8 @@ class PollsCreate extends Component {
   }
   componentWillMount() {
     axios.get('http://localhost:3000/api/users')
-      .then(res => {
-        this.setState({ availableUsers: res.data });
-      }).catch(err => console.log(err));
+      .then(res => this.setState({ availableUsers: res.data }))
+      .catch(err => console.log(err));
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value});
@@ -30,7 +29,8 @@ class PollsCreate extends Component {
   createPoll(e) {
     e.preventDefault();
     axios.post('http://localhost:3000/api/polls', {poll: this.state})
-      .then(res => console.log(res));
+      .then(res => this.props.history.push(`/polls/${res.data.id}/edit`))
+      .catch(err => console.log(err));
   }
   render() {
     return (

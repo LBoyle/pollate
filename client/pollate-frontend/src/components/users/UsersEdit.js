@@ -17,9 +17,12 @@ class UsersEdit extends Component {
   }
   componentWillMount() {
     axios.get(`http://localhost:3000/api/users/${this.props.location.pathname.split('/')[2]}`)
-      .then(res => {
-        this.setState({email: res.data.email, username: res.data.username, image: res.data.image});
-      }).catch(err => console.log(err));
+      .then(res => this.setState({
+        email: res.data.email,
+        username: res.data.username,
+        image: res.data.image
+      }))
+      .catch(err => console.log(err));
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value});
@@ -27,9 +30,8 @@ class UsersEdit extends Component {
   updateUser(e) {
     e.preventDefault();
     axios.put(`http://localhost:3000/api/users/${this.props.location.pathname.split('/')[2]}`, {user: this.state})
-      .then(res => {
-        this.setState({email: res.data.email, username: res.data.username, image: res.data.image});
-      }).catch(err => console.log(err));
+      .then(res => this.props.history.push(`/users/${res.data.id}`))
+      .catch(err => console.log(err));
   }
   render() {
     return (

@@ -12,9 +12,8 @@ class UsersShow extends Component {
   }
   componentWillMount() {
     axios.get(`http://localhost:3000/api/users/${this.props.location.pathname.split('/')[2]}`)
-      .then(res => {
-        this.setState({user: res.data});
-      }).catch(err => console.log(err));
+      .then(res => this.setState({user: res.data}))
+      .catch(err => console.log(err));
   }
   render() {
     return (
