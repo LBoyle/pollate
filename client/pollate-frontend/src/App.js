@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
 import NavBar from './components/NavBar';
+import Vote from './components/Vote';
 
 import Users from './components/users/Users';
 import UsersShow from './components/users/UsersShow';
@@ -29,6 +30,7 @@ class App extends Component {
           <Route exact path="/polls/create" component={PollsCreate} />
           <Route exact path="/polls/:id" component={PollsShow} />
           <Route exact path="/polls/:id/edit" component={PollsEdit} />
+          <Route exact path="/polls/:id/vote" component={Vote} />
         </Switch>
       </div>
     );

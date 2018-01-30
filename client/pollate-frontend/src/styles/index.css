@@ -11,7 +11,7 @@ nav ul li {
   display: inline;
   padding: 2rem;
 }
-.Home,
+.Home, .Vote,
 .Users, .UsersShow, .UsersCreate, .UsersEdit,
 .Polls, .PollsShow, .PollsCreate, .PollsEdit {
   padding: 3rem;
